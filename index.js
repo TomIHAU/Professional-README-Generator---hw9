@@ -1,6 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
-const js = require("js");
+const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 // TODO: Create an array of questions for user input
 const questions = [
@@ -16,40 +16,37 @@ const questions = [
   },
   {
     type: "input",
-    name: "Table of Contents",
-    message: "What is your projects title?",
-  },
-  {
-    type: "input",
-    name: "Installation",
+    name: "installation",
     message: "How do you install this project?",
   },
   {
     type: "input",
-    name: "Usage",
+    name: "usage",
     message: "How do you use this project?",
   },
+  //   {
+  //     type: "checkbox",
+  //     name: "license",
+  //     message: "What is your licenses is your project using?",
+  //     choices: [some choices here]
+  //   },
   {
     type: "input",
-    name: "License",
-    message: "What is your projects title?",
-  },
-  {
-    type: "input",
-    name: "Contributing",
+    name: "contributing",
     message: "Who contributed to this project?",
   },
   {
     type: "input",
-    name: "Tests",
+    name: "tests",
     message: "What tests has the project done?",
   },
   {
     type: "input",
-    name: "Questions",
+    name: "questions",
     message: "What outstanding questions do you have?",
   },
 ];
+
 //gh-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 //HEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
 // TODO: Create a function to write README file
@@ -63,12 +60,14 @@ function writeToFile(fileName, data) {
 function init() {
   inquirer
     .prompt(questions)
-    .then //xxxxx
-    ();
-  writeToFile(
-    "README.md" //xxxxxxxxx
-  );
+    .then((answer) => {
+      generateMarkdown(answer);
+    })
+    .then((markdown) => {
+      writeToFile("README.md", markdown);
+    });
 }
 
 // Function call to initialize app
 init();
+//console.log(questions);
