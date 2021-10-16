@@ -16,6 +16,8 @@ function generateMarkdown(data) {
   return `# ${data.projectTitle}
 ${data.description}
 /*table of contents
+sections entitled Description, Table of Contents, Installation, 
+Usage, License, Contributing, Tests, and Questions
 1. [ Description. ](#desc)
 2. [ Usage tips. ](#usage)
 
@@ -35,6 +37,12 @@ ${data.contributing}
 ${data.tests}
 ${data.questions}
 ${data.description}
+${data.githubUser}
+
+//THEN this is added to the section of the README entitled Questions
+//with instructions on how to reach me with additional questions
+https://github.com/${data.githubUser}
+${data.email}
 `;
 }
 
