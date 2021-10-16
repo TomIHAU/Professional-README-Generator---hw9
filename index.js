@@ -3,6 +3,10 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 // TODO: Create an array of questions for user input
+var str = "this is my sentence";
+str = str.split(" ").join("%20");
+console.log(str);
+
 const questions = [
   {
     type: "input",
@@ -34,12 +38,12 @@ const questions = [
     name: "tests",
     message: "What tests has the project done?",
   },
-  //   {
-  //     type: "checkbox",
-  //     name: "license",
-  //     message: "What is your licenses is your project using?",
-  //     choices: [ 'MIT','None']
-  //   },
+  {
+    type: "checkbox",
+    name: "license",
+    message: "What is your licenses is your project using?",
+    choices: ["MIT", "APACHE 2.0", "Boost 1.0", "BSD 3"],
+  },
   {
     type: "input",
     name: "githubUser",

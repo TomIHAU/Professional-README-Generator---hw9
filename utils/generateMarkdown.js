@@ -1,24 +1,43 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  noSpace = license.split(" ").join("%20");
+  console.log(noSpace);
+  return `[![License](https://img.shields.io/badge/License-${noSpace}-blue.svg)]`;
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  console.log(license);
+  if (license === "BSD 3") {
+    return "(https://opensource.org/licenses/BSD-3-Clause)";
+  } else if (license === "APACHE 2.0") {
+    return "(https://opensource.org/licenses/Apache-2.0)";
+  } else if (license === "Boost 1.0") {
+    return "(https://www.boost.org/LICENSE_1_0.txt)";
+  } else if (license === "MIT") {
+    return "(https://opensource.org/licenses/MIT)";
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  console.log(license);
+  for (let key of license) {
+    console.log(key);
+    return renderLicenseBadge(key) + renderLicenseLink(key);
+  }
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
+  
 
-table of contents
-sections entitled Description, Table of Contents, Installation, 
-Usage, License, Contributing, Tests, and Questions
-Table of Contents
+## Table of Contents
 1. [ Description. ](#desc)
 2. [ Installation. ](#inst)
 3. [ Usage tips. ](#usage)
@@ -26,7 +45,9 @@ Table of Contents
 5. [ Tests. ](#tests)
 6. [ Questions. ](#quest)
 
+## licenses
 ${data.license}
+${renderLicenseSection(data.license)}
 
 <a name="desc"></a>
 ## 1. Description
