@@ -1,11 +1,6 @@
-// TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
-// TODO: Create an array of questions for user input
-var str = "this is my sentence";
-str = str.split(" ").join("%20");
-console.log(str);
 
 const questions = [
   {
@@ -56,27 +51,19 @@ const questions = [
   },
 ];
 
-//gh-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
-//HEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
-// TODO: Create a function to write README file  GitHub username
 function writeToFile(fileName, data) {
   fs.writeFile(fileName, data, (err) =>
     err ? console.log(err) : console.log("Successfully created README")
   );
 }
 
-// TODO: Create a function to initialize app
-function init() {
+(() => {
   inquirer
     .prompt(questions)
     .then((answer) => {
       return generateMarkdown(answer);
     })
     .then((markdown) => {
-      writeToFile("README.md", markdown);
+      writeToFile("ProREADME.md", markdown);
     });
-}
-
-// Function call to initialize app
-init();
-//console.log(questions);
+})();
