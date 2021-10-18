@@ -8,4 +8,4 @@ Use node to open index.js. Input the requirements and it will output a readme fi
 
 #### demo video
 
-![Vidforhomework](https://user-images.githubusercontent.com/88224502/137669326-9c6248fd-79cd-4e24-bd1b-eac36453d729.gif)
+![lastTry](https://user-images.githubusercontent.com/88224502/137672821-43bae35d-ef95-4d3b-be79-a28969a634e4.gif)
