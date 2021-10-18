@@ -1,4 +1,4 @@
-#Professional README Generator
+# Professional README Generator
 
 A simple markdown generator using js
 
